@@ -1,0 +1,31 @@
+body {
+	font-family: "Museo Sans", Ubuntu, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+#headline {
+	background-color: #232F3E;
+	color: #e6e6fa;
+	padding: 20px;
+	margin-bottom: 22px;
+	height: 150px;
+}
+
+.container {
+	background-color: lightgreen;
+}
+
+.co {
+	padding: 12px;
+	height: 400px;
+	margin-top: 24px;
+}
+
+img {
+	height: 270px;
+	width: 250px;
+}
+
+#stars {
+	font-size: 25px;
+	color: #FFD700;
+}
