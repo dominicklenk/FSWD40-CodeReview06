@@ -1,5 +1,5 @@
-var audio = [                           
-    {                                   //
+var Audio = [                           
+    {                                   // arrays of Audio, Movies and Books objects below
         Title: 'Dylan',
         Author: 'Bob Dylan',
         Genre: 'rock',
@@ -32,8 +32,7 @@ var audio = [
 
 ];
 
-var movies = [
-
+var Movies = [
     {
         Title: 'City lights',
         Author: 'Charlie Chaplin',
@@ -67,8 +66,7 @@ var movies = [
 
 ];
 
-var books = [
-
+var Books = [
     {
         Title: 'Woodwalkers',
         Author: 'Katja Brandis',
@@ -98,7 +96,6 @@ var books = [
         Description: 'The Sandman is a book series written by Neil Gaiman and published by DC Comics.   It tells the story of Dream of the Endless, who rules over the world of dreams. The original series ran for 75 issues from January 1989 to March 1996. The series is famous for Gaimans trademark use of anthropomorphic personification of various metaphysical entities, while also blending mythology and history in its horror setting within the DC Universe.',
         img: "img/Sandman.jpg",
         Rating: 4
-
     }
 ];
 
@@ -111,39 +108,41 @@ document.write("<div class = \"container\">" + "<div class=\"row\">" + "<div id=
 
 
 
-for (var i = 0; i < movies.length; i++) {
+for (var i = 0; i < Movies.length; i++) {
 
-//$(document.body).append('<h2>Movies</h2><hr>"<div id="film" class= row""><div class="col-lg-4 col-md-6 col-sm-5"><div class="co"><img src= '+ movies[i].img + '><br><b> ' + ' Title: ' + ' </b> ' + movies[i].Title + ' <br>');
+//$(document.body).append('<h2>Movies</h2><hr>"<div id="film" class= row""><div class="col-lg-4 col-md-6 col-sm-5"><div class="co"><img src= '+ Movies[i].img + '><br><b> ' + ' Title: ' + ' </b> ' + Movies[i].Title + ' <br>');
 
-document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + movies[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + movies[i].Title + "<br>" + "Rating: ");
+document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + Movies[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + Movies[i].Title + "<br>" + "Rating: ");
 
 
 
-for (l = 0; l < movies[i].Rating; l++) {
+for (l = 0; l < Movies[i].Rating; l++) {
 document.write("<span id=\"stars\">" + '&starf;' + "</span>");
 
 };
 
+document.write("<br><div class=\"popup\" onclick=\"myFunction()\">Click me for more information!</div>");
 
-document.write("<div class=\"popup\">");
-document.write("</div>" + "</div>" + "</div>");
+
+document.write("</div>" + "</div>");
 
 
 };
 
+$( "<span class=\"popuptext\" id=\"myPopup\">A Simple Popup!</span>" ).appendTo( ".popup" );
 document.write("</div>");
+
+
 
 document.write("<h2>Books</h2>" + "<hr>" + '<div id=\"book\" class=\"row\">');
 
 
-
-
-for (var i = 0; i < books.length; i++) {
-document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + books[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + books[i].Title + "<br>" + "Rating: "); // '<div class=\"popup\" onclick="myFunction()"> + "Click, for more information!" + <span class=\"popuptext" id=\"myPopup">'write content here'</span>'</div\">'
+for (var i = 0; i < Books.length; i++) {
+document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + Books[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + Books[i].Title + "<br>" + "Rating: "); // '<div class=\"popup\" onclick="myFunction()"> + "Click, for more information!" + <span class=\"popuptext" id=\"myPopup">'write content here'</span>'</div\">'
 
 
 
-for (l = 0; l < books[i].Rating; l++) {
+for (l = 0; l < Books[i].Rating; l++) {
 document.write("<span id=\"stars\">" + '&starf;' + "</span>");
 };
 
@@ -158,14 +157,19 @@ document.write("<h2>Music</h2>" + "<hr>" + "<div id=\"mus\" class=\"row\">");
 
 
 
-for (var i = 0; i < audio.length; i++) {
-document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + audio[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + audio[i].Title + "<br>" + "Rating: ");
+for (var i = 0; i < Audio.length; i++) {
+document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + Audio[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + Audio[i].Title + "<br>" + "Rating: ");
 
 
-for (l = 0; l < audio[i].Rating; l++) {
+for (l = 0; l < Audio[i].Rating; l++) {
     document.write("<span id=\"stars\">" + '&starf;' + "</span>");
 };
 
+// For more information about media, click on div and open the popup
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
 
 document.write("<br>");
 document.write("<div class=\"popup\">");
