@@ -1,6 +1,7 @@
 var Audio = [                           
     {                                   // arrays of Audio, Movies and Books objects below
         Title: 'Dylan',
+        Type: "CD",
         Author: 'Bob Dylan',
         Genre: 'rock',
         Minutes: 34,
@@ -11,6 +12,7 @@ var Audio = [
     },
     {
         Title: 'Diamond Life',
+        Type: "CD",
         Author: 'Sade',
         Genre: 'smooth soul',
         Minutes: 45,
@@ -21,6 +23,7 @@ var Audio = [
     },
     {
         Title: 'Unforgettable',
+        Type: "CD",
         Author: 'Robin Schulz & Marc Scibilia',
         Genre: 'Dance & Electronic',
         Minutes: 3.46,
@@ -35,6 +38,7 @@ var Audio = [
 var Movies = [
     {
         Title: 'City lights',
+        Type: "DVD",
         Author: 'Charlie Chaplin',
         Genre: 'romantic comedy',
         Minutes: 87,
@@ -45,6 +49,7 @@ var Movies = [
     },
     {
         Title: 'Lawrence of Arabia',
+        Type: "DVD",
         Author: 'T.E.Lawrence',
         Genre: 'historical drama',
         Minutes: 222,
@@ -55,6 +60,7 @@ var Movies = [
     },
     {
         Title: 'Minority Report',
+        Type: "DVD",
         Author: 'Philip K. Dick',
         Genre: 'action',
         Minutes: 146,
@@ -69,6 +75,7 @@ var Movies = [
 var Books = [
     {
         Title: 'Woodwalkers',
+        Type: "Book",
         Author: 'Katja Brandis',
         Genre: 'belletristik',
         Publisher: 'Bild',
@@ -79,6 +86,7 @@ var Books = [
     },
     {
         Title: 'The Great Gatsby',
+        Type: "Book",
         Author: ' F. Scott Fitzgerald',
         Genre: 'fantasy drama',
         Publisher: 'Scribner',
@@ -89,6 +97,7 @@ var Books = [
     },
     {
         Title: 'The Sandman',
+        Type: "Book",
         Author: 'Neil Gaiman',
         Genre: 'fantasy',
         Publisher: 'Vertigo',
@@ -101,81 +110,138 @@ var Books = [
 
 
 
-//
-document.write("<div class = \"container\">" + "<div class=\"row\">" + "<div id=\"headline\" class=\"col-md-12\">" + "<h1 class=\"text-center\">MBM Mediathek<h1>" + "<br>" + "</div>" + "</div>" + "<h2>Movies</h2>" + "<hr>" + "<div id=\"film\" class=\"row\">");       // 
-
-
-
-
 
 for (var i = 0; i < Movies.length; i++) {
 
-//$(document.body).append('<h2>Movies</h2><hr>"<div id="film" class= row""><div class="col-lg-4 col-md-6 col-sm-5"><div class="co"><img src= '+ Movies[i].img + '><br><b> ' + ' Title: ' + ' </b> ' + Movies[i].Title + ' <br>');
+document.getElementById("film").innerHTML += `                       
+        <div class="col-lg-4 col-md-6 col-sm-5">
+            <a href="#" data-toggle="modal" data-target="#ModalMovie${i}"><img src="${Movies[i].img}"></a>
+            <br>
+            <strong>Title: </strong>${Movies[i].Title}
+            <br>
+            <strong>Type: </strong>${Movies[i].Type}
+            <br>
+            <strong>Rating: </strong>${Movies[i].Rating}<span id="stars"> &starf; </span>
 
-document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + Movies[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + Movies[i].Title + "<br>" + "Rating: ");
 
+<div class="modal fade" id="ModalMovie${i}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="text-center"><p>${Movies[i].Title}</p></h3>
+      </div>
+      <div class="modal-body">
+    
+    <p>Author: ${Movies[i].Author}</p>
+    <p>Genre: ${Movies[i].Genre}</p>
+    <p>Minutes: ${Movies[i].Minutes}</p>
+    <p>Publisher: ${Movies[i].Publisher}</p>
+    <p>Description: ${Movies[i].Description}</p>
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
 
+`
+};
+/*
 for (l = 0; l < Movies[i].Rating; l++) {
-document.write("<span id=\"stars\">" + '&starf;' + "</span>");
+document.getElementById("stars").innerHTML += "<span id=\"stars\">" + '&starf;' + "</span>";
 
 };
+*/
 
-document.write("<br><div class=\"popup\" onclick=\"myFunction()\">Click me for more information!</div>");
+for (var b = 0; b < Books.length; b++) {
+document.getElementById("book").innerHTML += `                       
+        <div class="col-lg-4 col-md-6 col-sm-5">
+            <a href="#" data-toggle="modal" data-target="#ModalBook${b}"><img src="${Books[b].img}"></a>
+            <br>
+            <strong class="">Title: </strong>${Books[b].Title}
+            <br>
+            <strong>Type: </strong>${Books[b].Type}
+            <br>
+            <strong>Rating: </strong> ${Books[b].Rating}<span id="stars"> &starf; </span>
 
 
-document.write("</div>" + "</div>");
+<div class="modal fade" id="ModalBook${b}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="text-center"><p>${Books[b].Title}</p></h3>
+      </div>
+      <div class="modal-body">
+    
+    <p>Author: ${Books[b].Author}</p>
+    <p>Genre: ${Books[b].Genre}</p>
+    <p>Minutes: ${Books[b].Minutes}</p>
+    <p>Publisher: ${Books[b].Publisher}</p>
+    <p>Description: ${Books[b].Description}</p>
 
-
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+`
 };
 
-$( "<span class=\"popuptext\" id=\"myPopup\">A Simple Popup!</span>" ).appendTo( ".popup" );
-document.write("</div>");
 
 
-
-document.write("<h2>Books</h2>" + "<hr>" + '<div id=\"book\" class=\"row\">');
-
-
-for (var i = 0; i < Books.length; i++) {
-document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + Books[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + Books[i].Title + "<br>" + "Rating: "); // '<div class=\"popup\" onclick="myFunction()"> + "Click, for more information!" + <span class=\"popuptext" id=\"myPopup">'write content here'</span>'</div\">'
-
-
-
+/*
 for (l = 0; l < Books[i].Rating; l++) {
 document.write("<span id=\"stars\">" + '&starf;' + "</span>");
 };
+*/
 
-document.write("</div>" + "</div>");
 
+for (var a = 0; a < Audio.length; a++) {
+document.getElementById("mus").innerHTML += `                       
+        <div class="col-lg-4 col-md-6 col-sm-5">
+            <a href="#" data-toggle="modal" data-target="#ModalAudio${a}"><img src="${Audio[a].img}"></a>
+            <br>
+            <strong>Title: </strong>${Audio[a].Title}
+            <br>
+            <strong>Type: </strong>${Audio[a].Type}
+            <br>
+            <strong>Rating:</strong> ${Audio[a].Rating}<span id="stars"> &starf; </span>
+
+
+<div class="modal fade" id="ModalAudio${a}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="text-center"><p>${Audio[a].Title}</p></h3>
+      </div>
+      <div class="modal-body">
+    
+    <p>Author: ${Audio[a].Author}</p>
+    <p>Genre: ${Audio[a].Genre}</p>
+    <p>Minutes: ${Audio[a].Minutes}</p>
+    <p>Publisher: ${Audio[a].Publisher}</p>
+    <p>Description: ${Audio[a].Description}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+`
 };
 
-document.write("</div>");
 
-document.write("<h2>Music</h2>" + "<hr>" + "<div id=\"mus\" class=\"row\">");
-
-
-
-
-for (var i = 0; i < Audio.length; i++) {
-document.write("<div class=\"col-lg-4 col-md-6 col-sm-5\">" + "<div class=\"co\">" + '<img src="' + Audio[i].img + '">' + '<br>' + "<b>" + "Title: " + "</b>" + Audio[i].Title + "<br>" + "Rating: ");
-
-
+/*
 for (l = 0; l < Audio[i].Rating; l++) {
     document.write("<span id=\"stars\">" + '&starf;' + "</span>");
 };
-
-// For more information about media, click on div and open the popup
-function myFunction() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-}
-
-document.write("<br>");
-document.write("<div class=\"popup\">");
-document.write("</div>");
-document.write("</div>");
-document.write("</div>");
-};
-
-document.write("</div>" + "</div>");
+*/
